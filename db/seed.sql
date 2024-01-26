@@ -1,10 +1,12 @@
 \c booking_dev
 
-INSERT INTO users (name, email, password_hash)
+-- Insert dummy data for users
+INSERT INTO users (first_name, last_name, email, password)
 VALUES
-('Sophia Miller', 'sophia@gmail.com', 'sophia123'),
-('Daniel Wilson', 'daniel@gmail.com', 'daniel123'),
-('Ava Smith', 'ava@gmail.com', 'ava123');
+('John', 'Doe', 'john.doe@example.com', 'John123'),
+('Alice', 'Smith', 'alice.smith@example.com', 'Alice123'),
+('Bob', 'Johnson', 'bob.johnson@example.com', 'Bob123');
+
 
 INSERT INTO rooms (name, capacity, floor, amenities, description)
 VALUES
