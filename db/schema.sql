@@ -2,12 +2,23 @@ DROP DATABASE IF EXISTS booking_dev;
 
 CREATE DATABASE booking_dev;
 
+\c booking_dev
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE rooms (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    capacity INTEGER NOT NULL,
+    floor INTEGER NOT NULL,
+    amenities TEXT,
+    description TEXT 
 );
 
 CREATE TABLE bookings (
@@ -19,13 +30,4 @@ CREATE TABLE bookings (
     checkout BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE rooms (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    capacity INTEGER NOT NULL,
-    floor INTEGER NOT NULL,
-    amenities TEXT,
-    description TEXT 
 );
