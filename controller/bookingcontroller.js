@@ -39,7 +39,8 @@ bookings.get("/:id", async (req, res) => {
 bookings.post("/", async (req, res) => {
     try {
         const createdBooking = await createBooking(req.body);
-        res.status(201).json(createBooking);
+        console.log(createdBooking)
+        res.status(201).json(createdBooking);
     } catch (error) {
         res.status(400).json({ error: "Booking creation failed" });
     }
@@ -50,7 +51,7 @@ bookings.put("/:id", async (req, res) => {
     try {
         const updatedBooking = await updateBooking(id, req.body);
         if (updatedBooking.id) {
-            res.status(200).json(updateBooking);
+            res.status(200).json(updatedBooking);
         } else {
             res.status(404).json({ error: "No booking found with that ID" });
         }
@@ -73,5 +74,5 @@ bookings.delete("/:id", async (req, res) => {
     }
 });
 
-module.export = bookings;
+module.exports = bookings;
     

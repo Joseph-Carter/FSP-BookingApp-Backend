@@ -10,7 +10,6 @@ const {
 
 users.get("/:userId", async (req, res) => {
   const { userId } = req.params;
-  console.log(userId, "<--- The userId param")
   const oneUser = await getOneUser(userId);
   if (oneUser) {
     res.json(oneUser);
@@ -22,6 +21,8 @@ users.get("/:userId", async (req, res) => {
 users.post("/signup", validateRegisterInput, async (req, res) => {
   try {
     const { password, ...userData } = req.body;
+    console.log(`userData:`, userData)
+    console.log(`req.body:`, req.body)
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const createdUser = await createUser({

@@ -10,9 +10,9 @@ const getAllRooms = async () => {
     }
 }
 
-const getOneRoom = async () => {
+const getOneRoom = async (id) => {
     try {
-        const oneRoom = await db.one("SELECT FROM rooms WHERE id = $1", id);
+        const oneRoom = await db.one("SELECT * FROM rooms WHERE id=$1", id);
         return oneRoom;
     } catch(err) {
         console.error('Error fetching one room:', err);
@@ -21,7 +21,7 @@ const getOneRoom = async () => {
 
 }
 
-const updateRoom = async () => {
+const updateRoom = async (id, room) => {
     try {
         const { name, capacity, floor, amenities, description } = room;
         const updatedRoom = await db.one("UPDATE rooms SET name =$1, capacity=$2, floor=$3, amenities=$4, description=$5 WHERE id=$6 RETURNING * ", [name, capacity, floor, amenities, description, id]);
