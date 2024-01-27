@@ -16,19 +16,18 @@ CREATE TABLE rooms (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     capacity INTEGER NOT NULL,
-    floor INTEGER NOT NULL,
     location VARCHAR(255),
     image VARCHAR(255)
 );
 
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
-    room_id INTEGER REFERENCES rooms (id) ON DELETE CASCADE
+    room_id INTEGER REFERENCES rooms (id) ON DELETE CASCADE,
     start_date TIMESTAMP NOT NULL,
     end_date TIMESTAMP NOT NULL,
     checkout BOOLEAN DEFAULT FALSE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    attendies VARCHAR(255)
+    attendees INTEGER,
+    special_requirements VARCHAR(255)
 );

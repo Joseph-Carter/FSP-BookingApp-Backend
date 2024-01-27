@@ -22,9 +22,9 @@ const getOneRoom = async (id) => {
 };
 
 const createRoom = async (room) => {
-    const { name, capacity, location, isVeteranSpecific } = room;
+    const { name, capacity, location, image } = room;
     try {
-        const newRoom = await db.one("INSERT INTO rooms (name, capacity, location, is_veteran_specific) VALUES ($1, $2, $3, $4) RETURNING *", [name, capacity, location, isVeteranSpecific]);
+        const newRoom = await db.one("INSERT INTO rooms (name, capacity, location, image) VALUES ($1, $2, $3, $4) RETURNING *", [name, capacity, location, image]);
         return newRoom;
     } catch (error) {
         return error;
@@ -33,8 +33,8 @@ const createRoom = async (room) => {
 
 const updateRoom = async (id, room) => {
     try {
-        const { name, capacity, floor, amenities, description } = room;
-        const updatedRoom = await db.one("UPDATE rooms SET name =$1, capacity=$2, floor=$3, amenities=$4, description=$5 WHERE id=$6 RETURNING * ", [name, capacity, floor, amenities, description, id]);
+        const { name, capacity, location, image } = room;
+        const updatedRoom = await db.one("UPDATE rooms SET name =$1, capacity=$2, location=$3, image=$4,  WHERE id=$5 RETURNING * ", [name, capacity, location, image, id]);
         return updatedRoom
     } catch(err) {
         console.error('Error updating room:', err);
