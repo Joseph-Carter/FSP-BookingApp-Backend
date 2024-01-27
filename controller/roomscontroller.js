@@ -4,6 +4,8 @@ const rooms = express.Router();
 const {
     getAllRooms,
     getOneRoom,
+    createRoom,
+    deleteRoom,
     updateRoom
 } = require("../queries/rooms");
 
@@ -32,6 +34,31 @@ rooms.get("/:id", async (req, res) => {
     } catch (err) {
         res.status(500),json({ error: "Server error" });
     }
+});
+
+rooms.post("/", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const createdRoom = await createRoom(req.body);
+    res.json(createdRoom);
+  } catch (err) {
+    res.status(400).json({ error: "Failed to create new Room." });
+  }
+});
+
+rooms.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedRoom = await deleteRoom(Room_id);
+
+    if (deletedRoom) {
+      res.status(200).json(deletedRoom);
+    } else {
+      res.status(404).json("No Room found");
+    }
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 rooms.put("/:id", async (req, res) => {

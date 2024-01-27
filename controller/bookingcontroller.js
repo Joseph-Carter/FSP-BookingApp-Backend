@@ -13,7 +13,7 @@ bookings.get("/", async (req, res) => {
     try {
         const allBookings = await getAllBookings();
         if (allBookings.length)  {
-            res.status(200).json({ success: true, payload: allBookings });
+            res.status(200).json(allBookings);
         } else {
             res.status(404).json({ success: false, error: "No bookings found" })
         }
