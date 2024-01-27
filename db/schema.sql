@@ -12,22 +12,24 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE rooms (
+CREATE TABLE eventspaces (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    space_name VARCHAR(255) NOT NULL,
     capacity INTEGER NOT NULL,
     location VARCHAR(255),
-    image VARCHAR(255)
+    image VARCHAR(255),
+    description VARCHAR(255)
 );
 
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255),
+    event_name VARCHAR(255),
     user_id INTEGER REFERENCES users (id) ON DELETE CASCADE,
-    room_id INTEGER REFERENCES rooms (id) ON DELETE CASCADE,
+    eventspaces_id INTEGER REFERENCES eventspaces (id) ON DELETE CASCADE,
     start_date TIMESTAMP NOT NULL,
     end_date TIMESTAMP NOT NULL,
     checkout BOOLEAN DEFAULT FALSE,
+    booked BOOLEAN DEFAULT FALSE,
     attendees INTEGER,
     special_requirements VARCHAR(255)
 );

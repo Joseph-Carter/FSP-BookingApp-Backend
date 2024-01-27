@@ -21,8 +21,6 @@ users.get("/:userId", async (req, res) => {
 users.post("/signup", validateRegisterInput, async (req, res) => {
   try {
     const { password, ...userData } = req.body;
-    console.log(`userData:`, userData)
-    console.log(`req.body:`, req.body)
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const createdUser = await createUser({
