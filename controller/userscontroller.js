@@ -1,7 +1,7 @@
 const express = require("express");
 const users = express.Router();
 const bcrypt = require("bcryptjs");
-const { validateRegisterInput } = require("../validation/usersValidation");
+const { validateRegisterInput } = require("../validation/userValidation");
 const {
   getOneUserByEmail,
   createUser,
@@ -10,6 +10,7 @@ const {
 
 users.get("/:userId", async (req, res) => {
   const { userId } = req.params;
+  console.log(userId, "<--- The userId param")
   const oneUser = await getOneUser(userId);
   if (oneUser) {
     res.json(oneUser);

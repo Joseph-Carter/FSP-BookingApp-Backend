@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS booking_dev;
 
 CREATE DATABASE booking_dev;
 
-\c booking_dev
+\c booking_dev;
 
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
@@ -23,11 +23,11 @@ CREATE TABLE rooms (
 
 CREATE TABLE bookings (
     id SERIAL PRIMARY KEY,
-    user_id INTEGER REFERENCES users(id) ON DELETE SET NULL,
-    room_id INTEGER REFERENCES rooms(id) ON DELETE SET NULL,
     start_date TIMESTAMP NOT NULL,
     end_date TIMESTAMP NOT NULL,
     checkout BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    user_id INTEGER REFERENCES users (id) ON DELETE SET NULL,
+    room_id INTEGER REFERENCES rooms (id) ON DELETE SET NULL,
 );

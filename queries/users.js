@@ -2,7 +2,7 @@ const db = require("../db/dbConfig");
 
 
 const getOneUser = async (id) => {
-  console.log(id)
+  console.log(id, "<---before the try catch")
   try {
     const oneUser = await db.one("SELECT * FROM users WHERE id=$1", id);
     console.log("THIS IS ONEUSER QUERY --->", oneUser)
