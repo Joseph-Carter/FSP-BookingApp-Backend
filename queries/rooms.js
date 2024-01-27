@@ -19,7 +19,17 @@ const getOneRoom = async (id) => {
         return err;
     }
 
-}
+};
+
+const createRoom = async (room) => {
+    const { name, capacity, location, isVeteranSpecific } = room;
+    try {
+        const newRoom = await db.one("INSERT INTO rooms (name, capacity, location, is_veteran_specific) VALUES ($1, $2, $3, $4) RETURNING *", [name, capacity, location, isVeteranSpecific]);
+        return newRoom;
+    } catch (error) {
+        return error;
+    }
+  };
 
 const updateRoom = async (id, room) => {
     try {
@@ -32,9 +42,20 @@ const updateRoom = async (id, room) => {
     }
 };
 
+const deleteRoom = async (id, room) => {
+    try {
+        const deletedRoom = await db.one("DELETE FROM Room WHERE id=$1 RETURNING *", id);
+        return deletedRoom;
+    } catch (error) {
+        return error
+    }
+};
+
 
 module.exports = {
     getAllRooms,
     getOneRoom,
+    createRoom,
+    deleteRoom,
     updateRoom
 }
