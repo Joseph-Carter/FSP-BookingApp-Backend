@@ -15,5 +15,5 @@ VALUES
 INSERT INTO bookings (name, user_id, room_id, start_date, end_date, checkout, attendees, special_requirements)
 VALUES
 ('Team Meeting', 1, 1, '2024-02-01 10:00:00', '2024-02-01 12:00:00', FALSE, 15, 'Project discussion'),
-('Client Presentation', 2, 2, '2024-02-02 14:00:00', '2024-02-02 16:00:00', FALSE, 8, 'Audio-visual setup'),
-('Company Event', 3, 3, '2024-02-03 09:00:00', '2024-02-03 17:00:00', FALSE, 40, 'Catering required');
+('Client Presentation', 8, 2, '2024-02-02 14:00:00', '2024-02-02 16:00:00', FALSE, 8, 'Audio-visual setup'),
+('Company Event', 10, 3, '2024-02-03 09:00:00', '2024-02-03 17:00:00', FALSE, 40, 'Catering required');
