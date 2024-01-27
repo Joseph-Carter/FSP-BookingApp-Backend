@@ -1,15 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const usersController = require("./controller/usersController")
+const usersController = require("./controller/userController")
 const eventSpaceController = require("./controller/eventSpacesController")
-const bookingController = require("./controller/bookingController")
+const bookingController = require("./controller/bookingsController")
 
 app.use(cors());
 app.use(express.json());
 
 app.use("/users", usersController)
-app.use("/eventSpace", eventSpaceController)
+app.use("/eventspace", eventSpaceController)
 app.use("/bookings", bookingController)
 
 app.get("/", (req, res) => {

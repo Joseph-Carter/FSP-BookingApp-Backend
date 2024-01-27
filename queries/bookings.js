@@ -10,7 +10,7 @@ const getAllBookings = async () => {
     }
 }
 
-const getOneBooking = async () => {
+const getOneBooking = async (id) => {
     try {
         const oneBooking = await db.one("SELECT * FROM bookings WHERE id=$1", id)
         return oneBooking

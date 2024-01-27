@@ -23,7 +23,7 @@ bookings.get("/", async (req, res) => {
 });
 
 bookings.get("/:id", async (req, res) => {
-    const [ id ] = req.params;
+    const  { id } = req.params;
     try {
         const oneBooking = await getOneBooking(id);
         if (oneBooking) {
