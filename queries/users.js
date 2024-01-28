@@ -2,6 +2,7 @@ const db = require("../db/dbConfig");
 
 
 const getOneUser = async (id) => {
+  console.log(id)
   try {
     const oneUser = await db.one("SELECT * FROM users WHERE id=$1", id);
     return oneUser;
@@ -11,6 +12,7 @@ const getOneUser = async (id) => {
 };
 
 const getOneUserByEmail = async (email) => {
+  console.log(email)
   try {
     const oneUser = await db.one("SELECT * FROM users WHERE email=$1", email);
     return oneUser;
