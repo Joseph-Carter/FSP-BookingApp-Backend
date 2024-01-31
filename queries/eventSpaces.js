@@ -22,9 +22,9 @@ const getOneEventSpace = async (id) => {
 };
 
 const createEventSpace = async (eventSpace) => {
-    const { name, capacity, location, image, description } = eventSpace;
+    const { space_name, capacity, location, image, description } = eventSpace;
     try {
-        const newEventSpace = await db.one("INSERT INTO eventspaces (name, capacity, location, image, description) VALUES ($1, $2, $3, $4, $5) RETURNING *", [name, capacity, location, image, description]);
+        const newEventSpace = await db.one("INSERT INTO eventspaces (space_name, capacity, location, image, description) VALUES ($1, $2, $3, $4, $5) RETURNING *", [space_name, capacity, location, image, description]);
         return newEventSpace;
     } catch (error) {
         return error;
@@ -33,8 +33,8 @@ const createEventSpace = async (eventSpace) => {
 
 const updateEventSpace = async (id, eventSpace) => {
     try {
-        const { name, capacity, location, image, description } = eventSpace;
-        const updatedEventSpace = await db.one("UPDATE eventspaces SET name=$1, capacity=$2, location=$3, image=$4, description=$5  WHERE id=$6 RETURNING * ", [name, capacity, location, image, description, id]);
+        const { space_name, capacity, location, image, description } = eventSpace;
+        const updatedEventSpace = await db.one("UPDATE eventspaces SET space_name=$1, capacity=$2, location=$3, image=$4, description=$5  WHERE id=$6 RETURNING * ", [space_name, capacity, location, image, description, id]);
         return updatedEventSpace
     } catch(err) {
         console.error('Error updating Event Space:', err);
