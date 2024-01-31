@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", usersController)
-app.use("/eventspaces", eventSpacesController)
+app.use("/events", eventSpacesController)
 app.use("/bookings", bookingController)
 
 app.get("/", (req, res) => {
