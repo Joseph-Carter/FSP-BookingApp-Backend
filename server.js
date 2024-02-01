@@ -1,6 +1,6 @@
 const app = require("./app.js")
 
-const PORT = process.env.PORT||7575
+const PORT = process.env.PORT || 7575
 
 require("dotenv").config();
 
